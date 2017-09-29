@@ -1,0 +1,83 @@
+Configure miss: --with-python
+Configure miss: libgnutls-config
+Configure miss: main in -ldce
+Configure miss: mp.h usability
+Configure miss: mp.h presence
+Configure miss: mp.h
+Configure miss: pow in -lbsd
+Configure miss: plan_tests in -ltap
+Configure miss: PQsetdbLogin in -lpq
+Configure miss: dbi_initialize in -ldbi
+Configure miss: rc_read_config in -lfreeradius-client
+Configure miss: rc_read_config in -lradiusclient-ng
+Configure miss: rc_read_config in -lradiusclient
+Configure miss: main in -lldap
+Configure miss: mysql_init in -lmysqlclient
+Configure miss: wtsapi32.h
+Configure miss: krb5.h usability
+Configure miss: krb5.h presence
+Configure miss: krb5.h
+Configure miss: krb5.h usability
+Configure miss: krb5.h presence
+Configure miss: krb5.h
+Configure miss: shl_load in -ldl
+Configure miss: uio.h usability
+Configure miss: uio.h presence
+Configure miss: uio.h
+Configure miss: floor
+Configure miss: ping
+Configure miss: ping6
+Configure miss: ICMPv6 ping syntax
+Configure miss: nslookup
+Configure miss: rpcinfo
+Configure miss: lmstat
+Configure miss: smbclient
+Configure miss: snmpget
+Configure miss: snmpgetnext
+Configure miss: quakestat
+Configure miss: qstat
+Configure miss: fping
+Configure miss: fping6
+Configure miss: ssh
+Configure miss: sudo
+Configure miss: mailq
+Configure miss: qmail-qstat
+Configure miss: swap
+Configure miss: swapinfo
+Configure miss: lsps
+Configure miss: whether swapctl is declared
+Configure miss: swaptbl_t
+Configure miss: swapent_t
+Configure miss: struct swapent.se_nblks
+Configure miss: struct msghdr.msg_control
+Configure miss: struct msghdr.msg_controllen
+Configure miss: dig
+Configure miss: apt-get
+Configure miss: sys/fs_types.h usability
+Configure miss: sys/fs_types.h presence
+Configure miss: sys/fs_types.h
+Configure miss: xlocale.h usability
+Configure miss: xlocale.h presence
+Configure miss: xlocale.h
+Configure miss: whether to use statvfs64
+Configure miss: dustat.h usability
+Configure miss: dustat.h presence
+Configure miss: dustat.h
+Configure miss: sys/fs/s5param.h usability
+Configure miss: sys/fs/s5param.h presence
+Configure miss: sys/fs/s5param.h
+Configure miss: sys/filsys.h usability
+Configure miss: sys/filsys.h presence
+Configure miss: sys/filsys.h
+Configure miss: statfs that truncates block counts
+Configure miss: whether gai_strerrorA is declared
+Configure miss: __mktime_internal
+Configure miss: listmntent
+Configure miss: sys/ucred.h
+Configure miss: struct fsstat.f_fstypename
+Configure miss: listmntent of Cray/Unicos-9
+Configure miss: mntctl function and struct vmount
+Configure miss: sys/mntent.h usability
+Configure miss: sys/mntent.h presence
+Configure miss: sys/mntent.h
+Configure miss: struct statfs.f_fstypename
