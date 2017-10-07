@@ -27,7 +27,7 @@ Configure miss: uio.h
 Configure miss: floor
 Configure miss: ping
 Configure miss: ping6
-Configure miss: ICMPv6 ping syntax
+Configure miss: ICMP ping syntax... checking for ICMPv6 ping syntax
 Configure miss: nslookup
 Configure miss: rpcinfo
 Configure miss: lmstat

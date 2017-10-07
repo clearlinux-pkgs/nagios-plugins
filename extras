@@ -1,0 +1,10 @@
+/usr/libexec/check_breeze
+/usr/libexec/check_disk_smb
+/usr/libexec/check_file_age
+/usr/libexec/check_flexlm
+/usr/libexec/check_ifoperstatus
+/usr/libexec/check_ifstatus
+/usr/libexec/check_ircd
+/usr/libexec/check_mailq
+/usr/libexec/check_rpc
+/usr/libexec/check_wave

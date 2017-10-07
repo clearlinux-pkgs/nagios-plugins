@@ -4,7 +4,7 @@
 #
 Name     : nagios-plugins
 Version  : 2.2.1
-Release  : 1
+Release  : 2
 URL      : https://nagios-plugins.org/download/nagios-plugins-2.2.1.tar.gz
 Source0  : https://nagios-plugins.org/download/nagios-plugins-2.2.1.tar.gz
 Summary  : Host/service/network monitoring program plugins for Nagios
@@ -34,6 +34,14 @@ Group: Binaries
 bin components for the nagios-plugins package.
 
 
+%package extras
+Summary: extras components for the nagios-plugins package.
+Group: Default
+
+%description extras
+extras components for the nagios-plugins package.
+
+
 %package locales
 Summary: locales components for the nagios-plugins package.
 Group: Default
@@ -50,7 +58,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1506704518
+export SOURCE_DATE_EPOCH=1507408667
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -62,7 +70,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1506704518
+export SOURCE_DATE_EPOCH=1507408667
 rm -rf %{buildroot}
 %make_install
 %find_lang nagios-plugins
@@ -72,26 +80,28 @@ rm -rf %{buildroot}
 
 %files bin
 %defattr(-,root,root,-)
+%exclude /usr/libexec/check_breeze
+%exclude /usr/libexec/check_disk_smb
+%exclude /usr/libexec/check_file_age
+%exclude /usr/libexec/check_flexlm
+%exclude /usr/libexec/check_ifoperstatus
+%exclude /usr/libexec/check_ifstatus
+%exclude /usr/libexec/check_ircd
+%exclude /usr/libexec/check_mailq
+%exclude /usr/libexec/check_rpc
+%exclude /usr/libexec/check_wave
 /usr/libexec/check_apt
-/usr/libexec/check_breeze
 /usr/libexec/check_clamd
 /usr/libexec/check_cluster
 /usr/libexec/check_disk
-/usr/libexec/check_disk_smb
 /usr/libexec/check_dummy
-/usr/libexec/check_file_age
-/usr/libexec/check_flexlm
 /usr/libexec/check_ftp
 /usr/libexec/check_http
 /usr/libexec/check_ide_smart
-/usr/libexec/check_ifoperstatus
-/usr/libexec/check_ifstatus
 /usr/libexec/check_imap
-/usr/libexec/check_ircd
 /usr/libexec/check_jabber
 /usr/libexec/check_load
 /usr/libexec/check_log
-/usr/libexec/check_mailq
 /usr/libexec/check_mrtg
 /usr/libexec/check_mrtgtraf
 /usr/libexec/check_nagios
@@ -108,7 +118,6 @@ rm -rf %{buildroot}
 /usr/libexec/check_pop
 /usr/libexec/check_procs
 /usr/libexec/check_real
-/usr/libexec/check_rpc
 /usr/libexec/check_sensors
 /usr/libexec/check_simap
 /usr/libexec/check_smtp
@@ -122,11 +131,23 @@ rm -rf %{buildroot}
 /usr/libexec/check_ups
 /usr/libexec/check_uptime
 /usr/libexec/check_users
-/usr/libexec/check_wave
 /usr/libexec/negate
 /usr/libexec/urlize
 /usr/libexec/utils.pm
 /usr/libexec/utils.sh
+
+%files extras
+%defattr(-,root,root,-)
+/usr/libexec/check_breeze
+/usr/libexec/check_disk_smb
+/usr/libexec/check_file_age
+/usr/libexec/check_flexlm
+/usr/libexec/check_ifoperstatus
+/usr/libexec/check_ifstatus
+/usr/libexec/check_ircd
+/usr/libexec/check_mailq
+/usr/libexec/check_rpc
+/usr/libexec/check_wave
 
 %files locales -f nagios-plugins.lang
 %defattr(-,root,root,-)
