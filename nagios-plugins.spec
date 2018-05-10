@@ -4,7 +4,7 @@
 #
 Name     : nagios-plugins
 Version  : 2.2.1
-Release  : 3
+Release  : 4
 URL      : https://nagios-plugins.org/download/nagios-plugins-2.2.1.tar.gz
 Source0  : https://nagios-plugins.org/download/nagios-plugins-2.2.1.tar.gz
 Summary  : Host/service/network monitoring program plugins for Nagios
