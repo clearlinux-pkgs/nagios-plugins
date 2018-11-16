@@ -4,16 +4,20 @@
 #
 Name     : nagios-plugins
 Version  : 2.2.1
-Release  : 5
+Release  : 6
 URL      : https://nagios-plugins.org/download/nagios-plugins-2.2.1.tar.gz
 Source0  : https://nagios-plugins.org/download/nagios-plugins-2.2.1.tar.gz
 Summary  : Host/service/network monitoring program plugins for Nagios
 Group    : Development/Tools
 License  : GPL-3.0
-Requires: nagios-plugins-bin
-Requires: nagios-plugins-locales
+Requires: nagios-plugins-libexec = %{version}-%{release}
+Requires: nagios-plugins-license = %{version}-%{release}
+Requires: nagios-plugins-locales = %{version}-%{release}
+BuildRequires : glibc-locale
 BuildRequires : gnutls-dev
+BuildRequires : krb5-dev
 BuildRequires : mariadb-dev
+BuildRequires : openldap-dev
 BuildRequires : openssl-dev
 BuildRequires : procps-ng
 
@@ -26,20 +30,29 @@ specify. The actual service checks are performed by separate "plugin"
 programs which return the status of the checks to Nagios. This package
 contains those plugins.
 
-%package bin
-Summary: bin components for the nagios-plugins package.
-Group: Binaries
-
-%description bin
-bin components for the nagios-plugins package.
-
-
 %package extras
 Summary: extras components for the nagios-plugins package.
 Group: Default
 
 %description extras
 extras components for the nagios-plugins package.
+
+
+%package libexec
+Summary: libexec components for the nagios-plugins package.
+Group: Default
+Requires: nagios-plugins-license = %{version}-%{release}
+
+%description libexec
+libexec components for the nagios-plugins package.
+
+
+%package license
+Summary: license components for the nagios-plugins package.
+Group: Default
+
+%description license
+license components for the nagios-plugins package.
 
 
 %package locales
@@ -58,9 +71,9 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1507408667
+export SOURCE_DATE_EPOCH=1542406079
 %configure --disable-static
-make V=1  %{?_smp_mflags}
+make  %{?_smp_mflags}
 
 %check
 export LANG=C
@@ -70,15 +83,30 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1507408667
+export SOURCE_DATE_EPOCH=1542406079
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/nagios-plugins
+cp COPYING %{buildroot}/usr/share/package-licenses/nagios-plugins/COPYING
 %make_install
 %find_lang nagios-plugins
 
 %files
 %defattr(-,root,root,-)
 
-%files bin
+%files extras
+%defattr(-,root,root,-)
+/usr/libexec/check_breeze
+/usr/libexec/check_disk_smb
+/usr/libexec/check_file_age
+/usr/libexec/check_flexlm
+/usr/libexec/check_ifoperstatus
+/usr/libexec/check_ifstatus
+/usr/libexec/check_ircd
+/usr/libexec/check_mailq
+/usr/libexec/check_rpc
+/usr/libexec/check_wave
+
+%files libexec
 %defattr(-,root,root,-)
 %exclude /usr/libexec/check_breeze
 %exclude /usr/libexec/check_disk_smb
@@ -100,6 +128,8 @@ rm -rf %{buildroot}
 /usr/libexec/check_ide_smart
 /usr/libexec/check_imap
 /usr/libexec/check_jabber
+/usr/libexec/check_ldap
+/usr/libexec/check_ldaps
 /usr/libexec/check_load
 /usr/libexec/check_log
 /usr/libexec/check_mrtg
@@ -136,18 +166,9 @@ rm -rf %{buildroot}
 /usr/libexec/utils.pm
 /usr/libexec/utils.sh
 
-%files extras
-%defattr(-,root,root,-)
-/usr/libexec/check_breeze
-/usr/libexec/check_disk_smb
-/usr/libexec/check_file_age
-/usr/libexec/check_flexlm
-/usr/libexec/check_ifoperstatus
-/usr/libexec/check_ifstatus
-/usr/libexec/check_ircd
-/usr/libexec/check_mailq
-/usr/libexec/check_rpc
-/usr/libexec/check_wave
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/nagios-plugins/COPYING
 
 %files locales -f nagios-plugins.lang
 %defattr(-,root,root,-)

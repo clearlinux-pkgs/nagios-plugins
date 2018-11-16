@@ -11,7 +11,6 @@ Configure miss: dbi_initialize in -ldbi
 Configure miss: rc_read_config in -lfreeradius-client
 Configure miss: rc_read_config in -lradiusclient-ng
 Configure miss: rc_read_config in -lradiusclient
-Configure miss: main in -lldap
 Configure miss: mysql_init in -lmysqlclient
 Configure miss: wtsapi32.h
 Configure miss: krb5.h usability
@@ -27,7 +26,7 @@ Configure miss: uio.h
 Configure miss: floor
 Configure miss: ping
 Configure miss: ping6
-Configure miss: ICMP ping syntax... checking for ICMPv6 ping syntax
+Configure miss: ICMPv6 ping syntax
 Configure miss: nslookup
 Configure miss: rpcinfo
 Configure miss: lmstat
@@ -56,9 +55,6 @@ Configure miss: apt-get
 Configure miss: sys/fs_types.h usability
 Configure miss: sys/fs_types.h presence
 Configure miss: sys/fs_types.h
-Configure miss: xlocale.h usability
-Configure miss: xlocale.h presence
-Configure miss: xlocale.h
 Configure miss: whether to use statvfs64
 Configure miss: dustat.h usability
 Configure miss: dustat.h presence
@@ -73,11 +69,9 @@ Configure miss: statfs that truncates block counts
 Configure miss: whether gai_strerrorA is declared
 Configure miss: __mktime_internal
 Configure miss: listmntent
-Configure miss: sys/ucred.h
 Configure miss: struct fsstat.f_fstypename
 Configure miss: listmntent of Cray/Unicos-9
 Configure miss: mntctl function and struct vmount
 Configure miss: sys/mntent.h usability
 Configure miss: sys/mntent.h presence
 Configure miss: sys/mntent.h
-Configure miss: struct statfs.f_fstypename

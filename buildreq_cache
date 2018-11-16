@@ -1,0 +1,8 @@
+2.2.1
+glibc-locale
+gnutls-dev
+krb5-dev
+mariadb-dev
+openldap-dev
+openssl-dev
+procps-ng
