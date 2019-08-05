@@ -11,7 +11,6 @@ Configure miss: dbi_initialize in -ldbi
 Configure miss: rc_read_config in -lfreeradius-client
 Configure miss: rc_read_config in -lradiusclient-ng
 Configure miss: rc_read_config in -lradiusclient
-Configure miss: mysql_init in -lmysqlclient
 Configure miss: wtsapi32.h
 Configure miss: krb5.h usability
 Configure miss: krb5.h presence

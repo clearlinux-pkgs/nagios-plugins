@@ -4,7 +4,7 @@
 #
 Name     : nagios-plugins
 Version  : 2.2.1
-Release  : 7
+Release  : 8
 URL      : https://nagios-plugins.org/download/nagios-plugins-2.2.1.tar.gz
 Source0  : https://nagios-plugins.org/download/nagios-plugins-2.2.1.tar.gz
 Summary  : Host/service/network monitoring program plugins for Nagios
@@ -20,6 +20,7 @@ BuildRequires : mariadb-dev
 BuildRequires : openldap-dev
 BuildRequires : openssl-dev
 BuildRequires : procps-ng
+Patch1: patch-set-default-MySQL-port.patch
 
 %description
 Nagios is a program that will monitor hosts and services on your
@@ -65,25 +66,34 @@ locales components for the nagios-plugins package.
 
 %prep
 %setup -q -n nagios-plugins-2.2.1
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1542406079
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1564993344
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1542406079
+export SOURCE_DATE_EPOCH=1564993344
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/nagios-plugins
 cp COPYING %{buildroot}/usr/share/package-licenses/nagios-plugins/COPYING
@@ -108,16 +118,6 @@ cp COPYING %{buildroot}/usr/share/package-licenses/nagios-plugins/COPYING
 
 %files libexec
 %defattr(-,root,root,-)
-%exclude /usr/libexec/check_breeze
-%exclude /usr/libexec/check_disk_smb
-%exclude /usr/libexec/check_file_age
-%exclude /usr/libexec/check_flexlm
-%exclude /usr/libexec/check_ifoperstatus
-%exclude /usr/libexec/check_ifstatus
-%exclude /usr/libexec/check_ircd
-%exclude /usr/libexec/check_mailq
-%exclude /usr/libexec/check_rpc
-%exclude /usr/libexec/check_wave
 /usr/libexec/check_apt
 /usr/libexec/check_clamd
 /usr/libexec/check_cluster
@@ -134,6 +134,8 @@ cp COPYING %{buildroot}/usr/share/package-licenses/nagios-plugins/COPYING
 /usr/libexec/check_log
 /usr/libexec/check_mrtg
 /usr/libexec/check_mrtgtraf
+/usr/libexec/check_mysql
+/usr/libexec/check_mysql_query
 /usr/libexec/check_nagios
 /usr/libexec/check_nntp
 /usr/libexec/check_nntps
