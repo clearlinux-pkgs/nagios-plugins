@@ -4,7 +4,7 @@
 #
 Name     : nagios-plugins
 Version  : 2.2.1
-Release  : 8
+Release  : 9
 URL      : https://nagios-plugins.org/download/nagios-plugins-2.2.1.tar.gz
 Source0  : https://nagios-plugins.org/download/nagios-plugins-2.2.1.tar.gz
 Summary  : Host/service/network monitoring program plugins for Nagios
@@ -66,6 +66,7 @@ locales components for the nagios-plugins package.
 
 %prep
 %setup -q -n nagios-plugins-2.2.1
+cd %{_builddir}/nagios-plugins-2.2.1
 %patch1 -p1
 
 %build
@@ -73,14 +74,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1564993344
+export SOURCE_DATE_EPOCH=1604360453
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static
 make  %{?_smp_mflags}
@@ -90,13 +91,13 @@ export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check || :
+make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1564993344
+export SOURCE_DATE_EPOCH=1604360453
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/nagios-plugins
-cp COPYING %{buildroot}/usr/share/package-licenses/nagios-plugins/COPYING
+cp %{_builddir}/nagios-plugins-2.2.1/COPYING %{buildroot}/usr/share/package-licenses/nagios-plugins/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 %make_install
 %find_lang nagios-plugins
 
@@ -170,7 +171,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/nagios-plugins/COPYING
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/nagios-plugins/COPYING
+/usr/share/package-licenses/nagios-plugins/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 
 %files locales -f nagios-plugins.lang
 %defattr(-,root,root,-)
