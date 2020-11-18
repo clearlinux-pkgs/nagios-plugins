@@ -40,6 +40,7 @@ Configure miss: ssh
 Configure miss: sudo
 Configure miss: mailq
 Configure miss: qmail-qstat
+Configure miss: smtpctl
 Configure miss: swap
 Configure miss: swapinfo
 Configure miss: lsps
