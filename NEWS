@@ -1,6 +1,87 @@
 This file documents the major additions and syntax changes between releases.
+2.4.10 2024-04-30
+	FIXES
+	check_mailq: Add config directory option and update pattern matching for exim mailservers (#754)
+	check_icmp: Very minor change to plugin output
 
-2.3.2 2020-03-11
+	TESTS
+	Update majority of the test suite to working condition
+
+2.4.9 2024-03-21
+	FIXES
+	check_snmp: Robustly fixes incorrect integer return value parsing (#749)
+
+2.4.8 2023-12-7
+	FIXES
+	check_snmp: Fixed issue where Timeticks would incorrectly show "No valid data returned" (#743)
+
+2.4.7 2023-11-16
+	FIXES
+	check_ntp.pl: Fix warning/critical threshold information missing from performance data output (#735)
+	check_ntp.pl: Fix issues when NTP server has a positive time offset (#734)
+	check_snmp: Fixed issue where plugin returned OK for missing OID (#679)
+	check_snmp: Fixed issue where OID name with numeric data was misinterpreted as OID value (#720)
+
+2.4.6 2023-08-01
+	FIXES
+	check_log: Fixed issue where /tmp directory would fill with unnecessary information (#724)
+	check_mailq: Correctly handle "Mail queue is empty" when monitoring Postfix over SSMTP (#611)
+	check_oracle: Reduce false positives when looking for "OK" messages (#723)
+	utils: Fix compiler warnings (#583, #637)
+
+2.4.5 2023-06-01
+	FIXES
+	check_dns: Fix buffer overflow on Ubuntu 22.04 (#699)
+	check_sensors: Use grep instead of deprecated egrep (#697)
+	check_tcp: Add --sni as an alias to -N (#701)
+	check_by_ssh: Prevent users from using ProxyCommand/LocalCommand/PermitLocalCommand (./configure --with-unrestricted-ssh-options=yes to re-enable)
+	build: fix bug when using VPATH builds (#700)
+
+2.4.4 2023-04-14
+	FIXES
+	check_log: improve file readability test to accommodate CAP_DAC_READ_SEARCH and similar (#604)
+	check_mrtgtraf: fix incorrect out_pct performance data metric (#600)
+	check_ping: handle "bad checksum" warning from ping output (#616)
+
+2.4.3 2023-01-17
+	FIXES
+	check_dig: Improve matching logic when using -a (#652)
+	check_mailq: Fix garbled output when checking postfix (#663)
+
+2.4.2 2022-11-08
+	FIXES
+	check_ntp/check_ntp_time: Fix calculation bug introduced in 2.4.1 (#677)
+
+2.4.1 2022-10-25
+	FIXES
+	check_ntp_time: Ensure -W/-C (stratum warning/critical thresholds) are available as short options (#661)
+	check_icmp: Fix "Invalid Argument" errors on FreeBSD 13.1 (#659)
+	check_icmp: Fix address binding in ipv6 (#666)
+	check_ntp/check_ntp_time: Fixed errors when compiling with strict aliasing (#665)
+	check_ifstatus: Fixed issue where OID 1.3.6.1.4.1.9.2.2.1.1.28 was queried on systems that didn't support it (#650)
+	check_smtp: Fix regression when using STARTTLS (#649, #648, #651)
+	check_log.sh: Use temporary files to fix diffing for high-throughput logs (#566)
+	Fixed several compile errors for upcoming clang-16 (#670)
+
+2.4.0 2021-11-18
+	ENHANCEMENTS
+	check_http: Add -o option (Append page body as performance data) (#615) (Tobias Leich)
+	check_icmp: Add -f and -F perfdata options (#567)
+	check_ifstatus: Add -d option (exclude interfaces by description regexp) (#548) (Alexandre Anriot)
+	check_smtp: Add support for SMTP over TLS (#565) (Franz Schwartau)
+	check_snmp: Add -M to multiply results by a given factor (#559) (Scott Baker)
+	
+	FIXES
+	lib: _np_state_calculate_location_prefix() should return non-void when running under suid (Kris Shannon)
+	pst3.c: Fix build issue on Solaris (#537)
+	check_by_ssh: Fix return code when ssh or the shell itself fails (#618) (Guillaume Rousse)
+	check_disk: Fix false DISK CRITICAL alerts on btrfs systems (#569) (George Hansper)
+	check_log: Fix error message for systems that don't use bash (#539)
+	check_log: Fix linebreaks in documentation (#621) (Matt Capra)
+	check_mysql_query: Fix use-after-free (#602) (Simon F)
+	negate: Errors are now printed directly to stderr instead of being redirected to stdout (#571) (Geert Hendrickx)
+
+2.3.3 2020-03-11
 	FIXES
 	check_http: Fix several issues related to page length calculation (#535, #533, #536)
 	check_icmp: fix issues when not running in debug mode (#530)
